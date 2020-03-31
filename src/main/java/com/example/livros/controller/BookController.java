@@ -36,7 +36,9 @@ public class BookController {
     public ModelAndView registerBook(@ModelAttribute Book book)
     {
         ModelAndView mv = new ModelAndView("bookView");
-        bs.addBook(book);
+        boolean error = bs.addBook(book);
+        if(error)
+            mv.addObject("erro",error);
         mv.addObject("books", bs.getBook().values() );
         return mv;
     }

@@ -17,7 +17,7 @@ public class BookService {
     @Autowired
     private BookReposity br;
 
-    public void addBook(Book book)
+    public boolean addBook(Book book)
     {
         boolean exist = false;
         for(Book b: br.getBook().values())
@@ -33,7 +33,9 @@ public class BookService {
         if(!exist)
         {
             br.addBook(book);
+            return false;
         }
+        return true;
     }
 
     public HashMap<Integer,Book> getBook()

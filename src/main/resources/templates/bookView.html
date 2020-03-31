@@ -65,6 +65,10 @@
             transition: filter 0.2s;
         }
 
+        #table-container {
+            padding:25px;
+        }
+
         th{
             background:black;
             color: #f0f0f5;
@@ -79,6 +83,11 @@
             background-color:black;
             border-radius: 8px;
         }
+        td {
+            font-size: 18px;
+            text-align: center;
+        }
+        
         </style>
 
 </head>
@@ -111,28 +120,30 @@
                     />
                 </div>
                 <button className="button" type="submit"> Cadastrar </button> 
-
-                <h2>Livros cadastrados</h2> 
-                <h3>
-                    <table width="250px">
-                            <thead>
-                                <tr>
-                                    <th >Título</th>
-                                    <th >Autor</th>
-                                    <th >Edição</th>
-                                    <th >Qtd Paginas</th>
-                                    <th >Preço</th>
-                                </tr>
-                            </thead>
-                                <tr th:each="books:${books}">
-                                    <td th:text="${books?.name}"/>
-                                    <td th:text="${books?.author}"/>
-                                    <td th:text="${books?.edition}"/>
-                                    <td th:text="${books?.numPag}"/>
-                                    <td th:text="${books?.cost}"/>
-                    </tr>
-                    </table>
-                </h3>
+                <div id="table-container">
+                    <h2>Livros cadastrados</h2> 
+                    <h3>
+                        <table width="625px">
+                                <thead>
+                                    <tr>
+                                        <th >Título</th>
+                                        <th >Autor</th>
+                                        <th >Edição</th>
+                                        <th >Qtd Paginas</th>
+                                        <th >Preço</th>
+                                    </tr>
+                                </thead>
+                                    <tr th:each="books:${books}">
+                                        <td th:text="${books?.name}"/>
+                                        <td th:text="${books?.author}"/>
+                                        <td th:text="${books?.edition}"/>
+                                        <td th:text="${books?.numPag}"/>
+                                        <td th:text="${books?.cost}"/>
+                        </tr>
+                        </table>
+                    </h3>
+                </div>
+                <div th:if="${erro}"> Error </div>
             </form>
         </div>
     </div>
